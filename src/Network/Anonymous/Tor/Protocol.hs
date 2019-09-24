@@ -137,8 +137,8 @@ isAvailable port = liftIO $ do
   takeMVar result
 
   where
-    performTest port result =
-      NST.connect "127.0.0.1" (show port) (\(sock, _) -> do
+    performTest p result =
+      NST.connect "127.0.0.1" (show p) (\(sock, _) -> do
                                                 _ <- protocolInfo sock
                                                 putMVar result Available)
 -- | Returns the configured SOCKS proxy port
