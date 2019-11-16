@@ -172,7 +172,7 @@ connect sport remote callback = liftIO $ do
   callback sock
 
   where
-    conf = Socks.defaultSocksConf "127.0.0.1" (fromInteger sport)
+    conf = Socks.defaultSocksConf $ Network.SockAddrInet (fromInteger sport)  (Network.tupleToHostAddress (0x7f, 0, 0, 1))
 
 connect' :: MonadIO m
          => Network.Socket           -- ^ Our connection with the Tor control port
